@@ -1,0 +1,551 @@
+/*Layout*/
+
+/*Color Codes
+DarkGreen: #2a593f
+LightGreen: #689e80
+lighterGreen: #88c6a3
+Light: #ece4d4, #d8d4b4
+Dark: #525b54
+*/
+* {
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.todarkbg {
+  color: rgba(255,255,255,.9);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #525b54;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("background.svg");
+  background-size: cover;
+}
+
+.main-container {
+  padding: 10px 10px 10px 10px;
+  width: 1366px;
+  height: 740px;
+}
+
+.grid-container {
+  padding: 10px 10px 10px 10px;
+  display: grid;
+  text-align: center;
+  border-radius: 15px;
+  background-image: url("containerbg.svg");
+  background-size: cover;
+  gap: 0;
+  grid-template-columns: 3.5fr 2.5fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  "input table1"
+  "graph table2";
+  height: fit-content;
+}
+
+.r1-container {
+  grid-area: input;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "inflow outflow reg";
+  width: 100%;
+  height: 100%;
+}
+
+.r2-container {
+  grid-area: table1;
+  width: 100%;
+  height: 100%;
+}
+
+.r3-container {
+  grid-area: graph;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.r4-container {
+  grid-area: table2;
+  width: 100%;
+  height: 100%;
+}
+
+.header{
+  display: block;
+  grid-area: header;
+  margin-top: -60px;
+  margin-left: 60px;
+}
+
+.inflow {
+  grid-area: inflow;
+  display: block;
+}
+
+.outflow {
+  grid-area: outflow;
+  display: block;
+}
+
+#table {
+  text-align: center;
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding: 10px 10px 10px 10px;
+  border-collapse: collapse;
+}
+
+#tableflow {
+  text-align: left;
+  display: table;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+tr {
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+}
+
+td {
+  padding: 0;
+  text-align: center;
+  justify-content: center;
+  justify-content: space-around;
+  width: 25%;
+}
+
+.statementtable {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.headplacement {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "description amount";
+  margin: 0px;
+  padding: 0px;
+}
+
+.cashflowtable {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cashflowGrid {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "interval income expense netcashflow";
+  margin: 0px;
+  padding: 0px;
+}
+
+.interval {
+  grid-area: interval;
+}
+
+.income {
+  grid-area: income;
+}
+
+.expense {
+  grid-area: expense;
+}
+
+.netcashflow {
+  grid-area: netcashflow;
+}
+
+.inter-extra {
+  width: 100%;
+  height: 50px;
+}
+
+.estimatebtn {
+  width: 400px;
+  height: 100%;
+}
+
+.estimate {
+  width: 100%;
+  height: 100%;
+}
+
+#datapointinp {
+  width: 100px;
+  margin-right: 15px;
+}
+
+#addpointbtn {
+  margin-right: 15px;
+}
+
+#estimateinp {
+  width: 160px;
+  margin-right: 10px;
+}
+
+.datapoints-container {
+  text-align: center;
+  display: grid;
+  width: 100%;
+  height: 100px;
+  margin-top: -10px;
+  border-radius: 10px;
+  gap: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+  grid-template-columns: 1fr 1fr;
+}
+
+.estimatelist {
+  overflow-y: scroll;
+}
+
+.datapointslist {
+  overflow-y: scroll;
+}
+
+.description-container {
+  text-align: center;
+  display: grid;
+  width: 100%;
+  height: 50px;
+  gap: 20px;
+  margin-top: -50px;
+  border-radius: 10px;
+  grid-template-columns: .8fr 1fr;
+  padding: 5px 20px 5px 20px;
+  font-size: 14px;
+}
+
+.bottomplacement {
+  height: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "cashflow total";
+  margin: 0px;
+  padding: 0px;
+}
+
+.cashflow {
+  grid-area: cashflow;
+}
+
+.total {
+  grid-area: total;
+}
+
+.description {
+  grid-area: description;
+}
+
+.amount {
+  grid-area: amount;
+}
+
+.rowtablescroll {
+  width: 100%;
+  height: 196px;
+  text-align: center;
+  overflow-y: auto;
+  border-bottom:solid;
+}
+
+.rowtablescrollbot {
+  width: 100%;
+  height: 220px;
+  text-align: center;
+  overflow-y: auto;
+  border-bottom:solid;
+}
+
+#chart_lines {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+}
+
+.forms {
+  text-align: left;
+}
+
+input {
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+input[type=button] {
+  background-color: #525b54;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  padding: 5px 5px 5px 5px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+}
+
+input[type=button]:hover {
+  cursor:pointer;
+  background-color: #949995;
+}
+
+#register {
+  margin-top: 21px;
+}
+
+select {
+  border: none;
+  border-radius: 5px;
+  padding: 1px 1px 1px 1px;
+  outline: none;
+  width: 80%;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+  margin-bottom: 20px;
+}
+
+.periodicityArea {
+  width: 100%;    
+}
+
+.periodicity-text {
+  width: 86%;
+  display: block;
+  margin-left: 22px;
+  height: 72px;
+}
+
+.timeInterval {
+  grid-area: "reg";
+  text-align: center;
+  width: 100%;
+}
+
+.separator {
+  display: none;
+  border-top: solid;
+}
+.separatorhead {
+  border-top: solid;
+  margin-bottom: 20px;
+  
+}
+.separator-bot {
+  border-top: solid;
+  margin-bottom: 10px;
+}
+
+.alertarea {
+  display:none;
+  position: fixed;
+  z-index: 1;
+  text-align: center;
+  top: 300px;
+  left: 480px;
+  width: 360px;
+  height: 100px;
+  border-radius: 10px;
+  color: rgb(177, 3, 3);
+  font-size: 18px;
+  background-color: rgba(255,255,255,.9);
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ---------- Financial Tips ------ */
+
+.tip-container {
+  padding: 15px 15px 15px 15px;
+  display: grid;
+  text-align: center;
+  border-radius: 15px;
+  background-image: url("containerbg.svg");
+  background-size: cover;
+  gap: 15px;
+  grid-template-columns: auto auto auto auto auto;
+  height: 675px;
+}
+
+.board1 {
+  width: 100%;
+  height: 100%;
+  background-color: #ede8e0;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  box-shadow: 3px 4px rgba(0,0,0,0.2);
+}
+
+img {
+  object-fit: cover;
+  width:200px;
+  height: 200px;
+  margin-top: 10px;
+  border-radius: 50px;
+}
+
+.paragraph {
+  text-align: justify;
+  font-size: 15px;
+}
+
+/* Contacts */
+.contact-container {
+  padding: 15px 15px 15px 15px;
+  display: grid;
+  text-align: center;
+  border-radius: 15px;
+  background-image: url("containerbg.svg");
+  background-size: cover;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  height: 675px;
+}
+
+.aboutboard {
+  width: 100%;
+  height: 100%;
+  background-color: #ede8e0;
+  padding: 80px 80px 80px 80px;
+  border-radius: 10px;
+  box-shadow: 3px 4px rgba(0,0,0,0.2);
+}
+
+.contactboard {
+  width: 100%;
+  height: 100%;
+  background-color: #ede8e0;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  box-shadow: 3px 4px rgba(0,0,0,0.2);
+}
+
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #a5aaad;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2a593f;
+  border-radius: 10px;
+}
+
+  ::-webkit-scrollbar-thumb:hover {
+      background-color: #689e80;
+  }
+
+/*Sidebar*/
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #2a593f; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.3s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+.sidebaricons {
+  font-size: 35px;
+  padding: none;
+  vertical-align: middle;
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 5px 5px 5px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  margin-top: 40px;
+  width: 260px;
+  height: 50px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: rgba(255,255,255,0.6);
+  text-shadow: 2px 3px rgba(0,0,0,0.3);
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  font-size: 46px;
+  top: -38px;
+  height: 60px;
+  left: 180px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  margin-left: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #525b54;
+  border: none;
+}
+
+.openbtn:hover {
+  color: #689e80;
+  text-shadow: 2px 3px rgba(0,0,0,0.1);
+}
+
+.btn-icon {
+  font-size: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .3s; /* If you want a transition effect */
+  padding: 0px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, shrink-to-fit=yes">
+        <title>ExtraRice</title>
+        <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+        <!-- Montserrat Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- Chart Source -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">
+                <span class="sidebaricons material-icons-outlined">home</span>    
+                Main Board</a>
+            <a href="tip-board.html">
+                <span class="sidebaricons material-icons-outlined">thumb_up</span>    
+                Financial Tips</a>
+            <a href="contacts.html">
+                <span class="sidebaricons material-icons-outlined">contact_support</span>
+                Contact</a>
+          </div>
+          
+          <div id="main">
+            <button class="openbtn" onclick="openNav()">
+                <span class="btn-icon material-icons-outlined">menu</span></button>
+                <div class="header">
+                    <a href="index.html">
+                        <h3><strong>ExtraRise | </strong>Cashflow Tracker and Projection</h3>
+                    </a>
+                </div>   
+      <div class="alertarea"></div>
+        <!--Start Header Area-->
+    <div class="main-container">
+        <div class="grid-container">
+        <!--End Header Area-->
+            <div class = "r1-container">
+                <!--Start Income Area-->
+                <div class="inflow">
+                    <h3><strong>INCOME</strong></h3>
+                        <p>Description</p>
+                        <input type="text" name="description" id="descriptionIN" />
+                        <br><p>Amount</p>
+                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        min="0" maxlength="9" name="amount" id="amountIN" />
+                        <br><br>
+                        <input type="button" value="Add Income" onClick="addIncome()" id="addIN">
+                        <div class="separator"></div>
+                </div>
+                <!--End Income Area-->
+
+               <!--Start Expense Area-->
+                <div class="outflow">
+                    <h3><strong>EXPENSES</strong></h3>
+                        <p>Description</p>
+                        <input type="text" name="description" id="descriptionOUT" />
+                        <br><p>Amount</p>
+                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        min="0" maxlength="9" name="amount" id="amountOUT" />
+                        <br><br>
+                        <input type="button" value="Add Expense" onClick="addExpense()" id="addOUT">
+                        <div class="separator"></div>
+                        
+                </div>
+                <!--End Expense Area-->
+
+                <!--Start Register Cashflow-->
+                <div class="timeInterval">
+                    <h3><strong>PERIODICITY</strong></h3>
+                    <p>Time Interval</p>
+                    <div class="periodicityArea">
+                        <select name="periodicity" id="periodicity">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                    <p class="periodicity-text">Please select the time interval before you register the cashflow</p>
+                    <div>
+                        <input type="button" value="Register Cashflow" onClick="displayCashflow()" id="register">
+                    </div>
+                    <div class="separator"></div>
+                </div>    
+                <!--End Register Cashflow-->
+            </div>
+            <div class="r3-container">
+                <div id="chart_lines"></div>
+            </div>
+           
+            <div class="inter-extra">
+                <div class="estimate">
+                    <label class="todarkbg" for="datapointinp">Data Point</label>
+                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type="number" min="0" maxlength="4" id="datapointinp">
+                    <input type="button" value="Add Point" id="addpointbtn" onclick="addDataPoint()">
+                    
+                    <label class="todarkbg" for="estimateinp">Estimate Value</label>
+                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type="number" min="0" maxlength="4" id="estimateinp">
+                    <input type="button" value="Estimate" id="estimatebtn" onclick="toInterpolate()">
+                    
+                </div>
+            </div>
+        
+            <!--Start Income/Expense Table-->
+            <div class="statementtable r2-container">
+                <div class="headplacement">
+                    <p class="description">Description</p><p class="amount">Amount</p>
+                </div>
+                <div class="separatorhead"></div>
+                <div class="rowtablescroll">
+                    <table id="table">
+                        <thead id="table-head">
+                        <tr></tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bottomplacement">
+                    <p class="cashflow">Net Cashflow</p><p id="net" class="total">₱ 0</p>
+                </div>
+                <!--End Income/Expense Table-->
+                <div class="separator-bot"></div>
+            </div>
+                <!--Start Cashflow Table-->
+            <div class="cashflowtable r4-container">
+                <div class="cashflowGrid">
+                    <p class="interval">Period</p>
+                    <p class="income">Income</p>
+                    <p class="expense">Expense</p>
+                    <p class="netcashflow">Net Cashflow</p>
+                </div>
+                <div class="separatorhead"></div>
+                <div class="rowtablescrollbot">
+                    <table id="tableflow">
+                        <thead id="table-head-cash">
+                        <tr></tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="datapoints-container">
+                <p class="datapointslist">Data Points<br></p>
+                <p class="estimatelist" >Estimates<br></p>
+            </div>
+            <div class="todarkbg description-container">
+                <p>Input the values of the known data points along Time Period (x)</p>
+                <p>Input the value to be estimated along Time Period (x) *Decimal Numbers are valid</p>
+            </div>
+            <!--End Cashflow Table-->
+        </div>
+    </div>  
+</div>
+       <!-- Scripts -->
+       <script src="script.js"></script>
+
+    </body>
+</html>
